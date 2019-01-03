@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#以垂直平分線分群
+#clustering by Vertical bisector
 def VerticalBisector(parameter,groupPoint):
 	m=-1/(parameter[1][1]-parameter[0][1]/parameter[1][0]-parameter[0][0])
 	center=[((parameter[1][0]+parameter[0][0])/2),((parameter[1][1]+parameter[0][1])/2)]
@@ -23,12 +23,12 @@ def VerticalBisector(parameter,groupPoint):
 
 	return Point
 	
-#歐拉公式計算兩點距離
+#calculator two point's distance by Euler's formula
 def Euler(groupPoint,parameter):
 	dis=np.sqrt(pow((parameter[0]-groupPoint[0]),2)+pow((parameter[1]-groupPoint[1]),2))
 	return dis
 
-#以歐拉公式分群
+#clustering by Euler's formula
 def GroupingEuler(kPoint,parameter):
 	Group1=[]
 	Group2=[]
@@ -47,7 +47,7 @@ def GroupingEuler(kPoint,parameter):
 	point.append(Group2)
 	return point
 
-#計算群值中心
+#calculator centroid points
 def newPoint(parameter):
 	count=0
 	X=0
@@ -79,9 +79,10 @@ while Euler(kPoint[0],newkPoint3[0])!=0:
 	kPoint.append(newkPoint3[1])
 	newkPoint3=GroupingEuler(kPoint,groupPoint)
 
-print(newkPoint3)
+#print result list
+#print(newkPoint3)
 
-"""
+#draw result fig 
 fig = plt.figure(1)
 plt.ion()
 for gr in newkPoint3[2]:
@@ -92,5 +93,3 @@ plt.scatter(newkPoint3[0][0],newkPoint3[0][1],s=60,c="black")
 plt.scatter(newkPoint3[1][0],newkPoint3[1][1],s=60,c="black")
 plt.show(1)
 plt.ioff()
-"""
-
